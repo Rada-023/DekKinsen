@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DekKinsen (เด็กกินเส้น) - Modern Creative Noodle Lab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#121212',
+                            card: '#1E1E1E',
+                            accent: '#FF4D2D',
+                            accentHover: '#E03E20',
+                            gold: '#E5A93C',
+                            muted: '#8E8E93',
+                            light: '#FAFAFA'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Kanit', 'Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #121212;
+            color: #FAFAFA;
+        }
+        .glass-panel {
+            background: rgba(30, 30, 30, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #FF4D2D 0%, #E5A93C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Hide scrollbars for smooth UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-brand-light antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Sticky Navigation -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-accent to-brand-gold flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-brand-accent/20 group-hover:scale-105 transition-transform">
+                        🍜
+                    </div>
+                    <div>
+                        <span class="text-2xl font-bold tracking-tight text-white block leading-none">DekKinsen</span>
+                        <span class="text-xs text-brand-gold font-light tracking-widest uppercase">เด็กกินเส้น • Creative Noodle</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                    <a href="#hero" class="text-gray-300 hover:text-brand-accent transition-colors">หน้าแรก</a>
+                    <a href="#strengths" class="text-gray-300 hover:text-brand-accent transition-colors">จุดเด่นของเรา</a>
+                    <a href="#menu" class="text-gray-300 hover:text-brand-accent transition-colors">เมนูสร้างสรรค์</a>
+                    <a href="#ai-assistant" class="text-gray-300 hover:text-brand-accent transition-colors flex items-center gap-1.5 text-brand-gold font-semibold">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i> AI Noodle Recommender
+                    </a>
+                </nav>
+
+                <!-- Cart Button & Quick CTA -->
+                <div class="flex items-center gap-4">
+                    <button onclick="toggleCartDrawer()" class="relative p-2.5 rounded-full bg-white/5 hover:bg-white/10 text-white transition-all border border-white/10">
+                        <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                        <span id="cart-badge" class="absolute -top-1 -right-1 bg-brand-accent text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold hidden">0</span>
+                    </button>
+                    <a href="#menu" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white font-medium text-sm transition-all shadow-lg shadow-brand-accent/20 hover:scale-105">
+                        <span>สั่งอาหารเลย</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden">
+        <div class="absolute inset-0 -z-10 opacity-30">
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-accent/20 rounded-full blur-[120px]"></div>
+            <div class="absolute bottom-10 right-10 w-[400px] h-[400px] bg-brand-gold/10 rounded-full blur-[100px]"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel text-brand-gold text-xs sm:text-sm font-medium mb-8 border border-brand-gold/30">
+                <i data-lucide="sparkles" class="w-4 h-4"></i>
+                <span>นวัตกรรมเมนูเส้นแห่งยุคดิจิทัล • Creative Fusion Noodle Lab</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight sm:leading-none mb-6">
+                เปิดมิติใหม่แห่งรสชาติ <br class="hidden sm:inline">
+                <span class="text-gradient">เด็กกินเส้น (DekKinsen)</span>
+            </h1>
+
+            <p class="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                ยกระดับเมนูเส้นด้วยความคิดสร้างสรรค์ ผสานศาสตร์อาหารสุขภาพ และอัลกอริทึม AI ที่พร้อมแนะนำเมนูที่ตรงกับอารมณ์และโภชนาการของคุณที่สุด
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#menu" class="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-accent hover:bg-brand-accentHover text-white font-medium text-base transition-all shadow-xl shadow-brand-accent/25 hover:scale-105 flex items-center justify-center gap-2">
+                    <i data-lucide="utensils" class="w-5 h-5"></i>
+                    <span>สำรวจเมนูไฮไลท์</span>
+                </a>
+                <a href="#ai-assistant" class="w-full sm:w-auto px-8 py-4 rounded-full glass-panel hover:bg-white/10 text-white font-medium text-base transition-all border border-white/20 flex items-center justify-center gap-2">
+                    <i data-lucide="bot" class="w-5 h-5 text-brand-gold"></i>
+                    <span>ให้ AI ช่วยเลือกเมนู</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Strengths Section -->
+    <section id="strengths" class="py-16 bg-black/40 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-xs uppercase tracking-widest text-brand-gold font-semibold mb-2">Why DekKinsen</h2>
+                <h3 class="text-2xl sm:text-4xl font-bold text-white">จุดเด่นที่ทำให้เราแตกต่าง</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="p-8 rounded-2xl glass-panel hover:border-brand-accent/40 transition-all hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-xl bg-brand-accent/10 border border-brand-accent/30 text-brand-accent flex items-center justify-center mb-6">
+                        <i data-lucide="cpu" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3">AI Personalization</h4>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">
+                        ใช้ระบบ AI วิเคราะห์ความต้องการด้านอารมณ์และเป้าหมายสุขภาพ เพื่อแนะนำเมนูเส้นที่แมตช์กับคุณที่สุดในแต่ละวัน
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="p-8 rounded-2xl glass-panel hover:border-brand-gold/40 transition-all hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-xl bg-brand-gold/10 border border-brand-gold/30 text-brand-gold flex items-center justify-center mb-6">
+                        <i data-lucide="heart-pulse" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3">Health & Nutrition Focus</h4>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">
+                        โปร่งใสด้วยข้อมูลโภชนาการแบบละเอียด วัตถุดิบ Superfood คัดสรรพิเศษ ตอบโจทย์คนรุ่นใหม่ที่ใส่ใจสุขภาพ
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="p-8 rounded-2xl glass-panel hover:border-brand-accent/40 transition-all hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-xl bg-brand-accent/10 border border-brand-accent/30 text-brand-accent flex items-center justify-center mb-6">
+                        <i data-lucide="sparkle" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3">Digital-Native Dining</h4>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">
+                        สั่งอาหารง่าย รวดเร็ว รองรับการปรับแต่งเมนู (Customization) มอบประสบการณ์ Seamless ทั้งออนไลน์และหน้าร้าน
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Noodle Assistant Widget Section -->
+    <section id="ai-assistant" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="rounded-3xl p-8 sm:p-12 relative overflow-hidden bg-gradient-to-br from-brand-card via-black to-brand-card border border-brand-gold/30 shadow-2xl">
+            <div class="absolute -right-10 -bottom-10 w-80 h-80 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/10 text-brand-gold text-xs font-semibold mb-4 border border-brand-gold/20">
+                    <i data-lucide="bot" class="w-4 h-4"></i>
+                    <span>AI Assistant (ผู้ช่วยเลือกเมนู)</span>
+                </div>
+                <h3 class="text-2xl sm:text-4xl font-bold mb-4">วันนี้คุณกำลังมองหารสชาติแบบไหน?</h3>
+                <p class="text-gray-400 text-sm sm:text-base font-light mb-8">
+                    บอกความรู้สึก หรือเป้าหมายสุขภาพของคุณ ให้ AI ของ **DekKinsen** คัดสรรเมนูที่สมบูรณ์แบบที่สุดให้คุณ!
+                </p>
+
+                <!-- Input Form -->
+                <div class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-medium text-gray-300 mb-2">อารมณ์/ความรู้สึกของคุณ</label>
+                            <select id="ai-mood" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-gold text-white">
+                                <option value="spicy" class="bg-black">อยากกินแซ่บๆ ตื่นตัว สดชื่น</option>
+                                <option value="exotic" class="bg-black">อยากลองอะไรแปลกใหม่ ไม่ซ้ำใคร</option>
+                                <option value="healthy" class="bg-black">เน้นเบาสบาย คุมแคลอรี</option>
+                                <option value="comfort" class="bg-black">ต้องการความอร่อยเข้มข้น จัดเต็ม</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-gray-300 mb-2">เป้าหมายทางสุขภาพ</label>
+                            <select id="ai-health" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-gold text-white">
+                                <option value="protein" class="bg-black">เน้นโปรตีนสูง อิ่มนาน</option>
+                                <option value="detox" class="bg-black">ช่วยระบบย่อย / ดีท็อกซ์</option>
+                                <option value="lowcarbs" class="bg-black">คาร์บต่ำ / ดัชนีน้ำตาลต่ำ (Low GI)</option>
+                                <option value="antioxidants" class="bg-black">ต้านอนุมูลอิสระ / บำรุงสมอง</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button onclick="runAIAssistant()" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-brand-gold to-brand-accent text-white font-medium text-sm hover:opacity-90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-gold/10">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                        <span>ประมวลผลเมนูที่เหมาะกับคุณ</span>
+                    </button>
+                </div>
+
+                <!-- Result Box -->
+                <div id="ai-result" class="hidden mt-8 p-6 rounded-2xl glass-panel border border-brand-gold/40 transition-all">
+                    <div class="flex items-start gap-4">
+                        <div id="ai-rec-img" class="w-20 h-20 rounded-xl overflow-hidden bg-white/5 flex-shrink-0 bg-cover bg-center"></div>
+                        <div class="flex-1">
+                            <span class="text-xs font-semibold text-brand-gold tracking-wider uppercase">แนะนำสำหรับคุณ</span>
+                            <h4 id="ai-rec-title" class="text-lg font-bold text-white mb-1"></h4>
+                            <p id="ai-rec-desc" class="text-xs text-gray-300 font-light mb-3"></p>
+                            <button id="ai-rec-btn" onclick="" class="px-4 py-2 rounded-lg bg-brand-accent text-white text-xs font-medium hover:bg-brand-accentHover transition-colors inline-flex items-center gap-1.5">
+                                <i data-lucide="plus" class="w-3.5 h-3.5"></i> สั่งเมนูนึ้ทันที
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Showcase Section -->
+    <section id="menu" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-xs uppercase tracking-widest text-brand-accent font-semibold mb-2">Signature Dishes</h2>
+            <h3 class="text-3xl sm:text-4xl font-bold text-white mb-4">5 เมนูเส้นฟิวชันสุดล้ำ</h3>
+            <p class="text-gray-400 text-sm max-w-xl mx-auto font-light">
+                สร้างสรรค์โดยทีมเชฟ DekKinsen รวบรวมรสชาติไทยดั้งเดิมเข้ากับเส้นแนวใหม่ ตอบโจทย์ยุคดิจิทัล
+            </p>
+        </div>
+
+        <!-- Menu Filter Buttons -->
+        <div class="flex items-center justify-center gap-2 mb-10 overflow-x-auto pb-2 no-scrollbar">
+            <button onclick="filterMenu('all')" class="menu-filter-btn px-5 py-2 rounded-full text-xs font-medium bg-brand-accent text-white border border-brand-accent transition-all" data-filter="all">ทั้งหมด</button>
+            <button onclick="filterMenu('seafood')" class="menu-filter-btn px-5 py-2 rounded-full text-xs font-medium bg-white/5 text-gray-300 border border-white/10 hover:border-brand-accent transition-all" data-filter="seafood">อาหารทะเล</button>
+            <button onclick="filterMenu('healthy')" class="menu-filter-btn px-5 py-2 rounded-full text-xs font-medium bg-white/5 text-gray-300 border border-white/10 hover:border-brand-accent transition-all" data-filter="healthy">แคลอรีต่ำ/สุขภาพ</button>
+            <button onclick="filterMenu('spicy')" class="menu-filter-btn px-5 py-2 rounded-full text-xs font-medium bg-white/5 text-gray-300 border border-white/10 hover:border-brand-accent transition-all" data-filter="spicy">รสเผ็ดจัดจ้าน</button>
+        </div>
+
+        <!-- Menu Grid -->
+        <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Dynamic Menu Cards Rendered by JS -->
+        </div>
+    </section>
+
+    <!-- Menu Detail Modal -->
+    <div id="menu-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden transition-opacity">
+        <div class="relative w-full max-w-2xl bg-brand-card rounded-3xl overflow-hidden border border-white/10 shadow-2xl max-h-[90vh] flex flex-col">
+            <!-- Modal Header / Image -->
+            <div class="relative h-64 sm:h-72 bg-black">
+                <img id="modal-img" src="" alt="" class="w-full h-full object-cover">
+                <button onclick="closeModal()" class="absolute top-4 right-4 p-2 rounded-full bg-black/60 text-white hover:bg-black transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body Scrollable -->
+            <div class="p-6 sm:p-8 overflow-y-auto space-y-6 flex-1">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 id="modal-title" class="text-2xl font-bold text-white mb-1"></h3>
+                        <p id="modal-subtitle" class="text-xs text-brand-gold font-light"></p>
+                    </div>
+                    <div id="modal-price" class="text-2xl font-extrabold text-brand-accent"></div>
+                </div>
+
+                <!-- Ingredients -->
+                <div>
+                    <h4 class="text-xs uppercase tracking-wider text-gray-400 font-semibold mb-2 flex items-center gap-1.5">
+                        <i data-lucide="layers" class="w-4 h-4 text-brand-accent"></i> ส่วนผสมหลัก (Ingredients)
+                    </h4>
+                    <p id="modal-ingredients" class="text-sm text-gray-300 leading-relaxed font-light bg-white/5 p-4 rounded-xl border border-white/5"></p>
+                </div>
+
+                <!-- Health Info -->
+                <div>
+                    <h4 class="text-xs uppercase tracking-wider text-gray-400 font-semibold mb-2 flex items-center gap-1.5">
+                        <i data-lucide="activity" class="w-4 h-4 text-brand-gold"></i> คุณค่าทางสุขภาพ (Health & Nutrition)
+                    </h4>
+                    <p id="modal-health" class="text-sm text-gray-300 leading-relaxed font-light bg-brand-gold/10 p-4 rounded-xl border border-brand-gold/20 text-brand-gold/90"></p>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-6 border-t border-white/10 glass-panel flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <span class="text-xs text-gray-400">จำนวน:</span>
+                    <div class="flex items-center border border-white/20 rounded-lg overflow-hidden bg-white/5">
+                        <button onclick="updateModalQty(-1)" class="px-3 py-1 text-gray-300 hover:bg-white/10">-</button>
+                        <span id="modal-qty" class="px-3 py-1 text-sm font-semibold text-white">1</span>
+                        <button onclick="updateModalQty(1)" class="px-3 py-1 text-gray-300 hover:bg-white/10">+</button>
+                    </div>
+                </div>
+                <button id="modal-add-btn" onclick="" class="px-6 py-3 rounded-xl bg-brand-accent hover:bg-brand-accentHover text-white font-medium text-sm transition-all flex items-center gap-2 shadow-lg shadow-brand-accent/20">
+                    <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+                    <span>เพิ่มลงตะกร้า</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Drawer -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="toggleCartDrawer()"></div>
+        <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-brand-card border-l border-white/10 flex flex-col shadow-2xl">
+                <!-- Cart Header -->
+                <div class="p-6 border-b border-white/10 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="shopping-bag" class="w-5 h-5 text-brand-accent"></i>
+                        <h3 class="text-lg font-bold text-white">ตะกร้าของคุณ</h3>
+                    </div>
+                    <button onclick="toggleCartDrawer()" class="p-2 rounded-full hover:bg-white/10 text-gray-400 hover:text-white">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+
+                <!-- Cart Items List -->
+                <div id="cart-items" class="flex-1 p-6 overflow-y-auto space-y-4">
+                    <!-- Dynamic Cart Items Rendered by JS -->
+                </div>
+
+                <!-- Cart Footer -->
+                <div class="p-6 border-t border-white/10 glass-panel space-y-4">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-400">ราคารวมทั้งสิ้น</span>
+                        <span id="cart-total" class="text-xl font-bold text-brand-gold">0 THB</span>
+                    </div>
+                    <button onclick="checkout()" class="w-full py-3.5 rounded-xl bg-brand-accent hover:bg-brand-accentHover text-white font-medium text-sm transition-all shadow-lg shadow-brand-accent/20 flex items-center justify-center gap-2">
+                        <span>ยืนยันการสั่งซื้อ</span>
+                        <i data-lucide="check-circle" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-white/10 py-12 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-accent to-brand-gold flex items-center justify-center text-white text-base">
+                        🍜
+                    </div>
+                    <span class="text-lg font-bold text-white">DekKinsen (เด็กกินเส้น)</span>
+                </div>
+                <p class="text-xs text-gray-500 font-light">
+                    &copy; 2026 DekKinsen Digital Noodle Lab. All rights reserved.
+                </p>
+                <div class="flex items-center gap-4 text-xs text-gray-400">
+                    <a href="#" class="hover:text-brand-accent">เงื่อนไขการบริการ</a>
+                    <a href="#" class="hover:text-brand-accent">นโยบายความเป็นส่วนตัว</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu Items Data
+        const menuItems = [
+            {
+                id: 1,
+                title: "บะหมี่ดำหมึกถ่านกับซอสต้มยำชีส",
+                enTitle: "Squid Ink Charcoal Noodles with Tom Yum Cheese Sauce",
+                price: 259,
+                image: "menu1.png",
+                category: ["seafood", "spicy"],
+                ingredients: "เส้นบะหมี่หมึกถ่านชาโคล, กุ้งสดตัวโต, ปลาหมึกวง, โมสซาเรลล่าชีสยืด, สมุนไพรต้มยำสด (ข่า ตะไคร้ ใบมะกรูด), พริกเผาสูตรพิเศษ",
+                health: "ผงชาโคล (Activated Charcoal) มีคุณสมบัติช่วยดูดซับสารพิษในระบบย่อยอาหาร ผสานกุ้งและหมึกสดอุดมด้วยโอเมก้า-3 และโปรตีนสูง"
+            },
+            {
+                id: 2,
+                title: "พาสต้าเส้นมะม่วงน้ำปลาหวาน",
+                enTitle: "Mango Pasta with Sweet Fish Sauce Dressing",
+                price: 189,
+                image: "menu2.png",
+                category: ["healthy"],
+                ingredients: "เส้นเฟตตูชินีเหนียวนุ่ม, เส้นมะม่วงน้ำดอกไม้ดิบฝอย, กุ้งแห้งเกรดเอ, ถั่วลิสงคั่วขรุขระ, ซอสน้ำปลาหวานสูตรกลมกล่อม",
+                health: "มะม่วงดิบอุดมไปด้วยวิตามินซีและใยอาหารสูง เมนูทางเลือกไขมันต่ำ เพิ่มความสดชื่น กระตุ้นการทำงานของระบบขับถ่าย"
+            },
+            {
+                id: 3,
+                title: "สปาเกตตี้เส้นช็อกโกแลตซอสพริกเผา",
+                enTitle: "Dark Chocolate Spaghetti with Chili Paste & Crisp Bacon",
+                price: 229,
+                image: "menu3.png",
+                category: ["spicy"],
+                ingredients: "สปาเกตตี้ผสมผงดาร์กโกโก้ 70%, เบคอนกรอบ, ซอสพริกเผารสเข้มข้น, ใบโหระพาพริกแห้ง, กระเทียมเจียวกรอบ",
+                health: "ดาร์กโกโก้เข้มข้นอุดมด้วยสารต้านอนุมูลอิสระ (Polyphenols) ช่วยบำรุงสมอง ลดความเครียด และช่วยกระตุ้นการเผาผลาญ"
+            },
+            {
+                id: 4,
+                title: "วุ้นเส้นคริสตัลแกงเขียวหวานผัดแห้ง",
+                enTitle: "Crystal Glass Noodle Stir-Fried Dry Green Curry",
+                price: 199,
+                image: "menu4.png",
+                category: ["healthy", "spicy"],
+                ingredients: "วุ้นเส้นคริสตัล (ถั่วเขียว 100%), อกไก่นุ่มคัดพิเศษ, มะเขือเปราะ, มะเขือพวง, พริกแกงเขียวหวานตำเอง, ใบโหระพา",
+                health: "วุ้นเส้นคริสตัลให้ค่าดชนีน้ำตาลต่ำ (Low GI) เหมาะกับผู้ควบคุมน้ำหนัก อกไก่ให้โปรตีนไขมันต่ำ สมุนไพรในพริกแกงช่วยเผาผลาญ"
+            },
+            {
+                id: 5,
+                title: "สปาเกตตี้เส้นใหญ่ผัดเย็นตาโฟ",
+                enTitle: "Fettuccine / Wide Spaghetti Yentafo Stir-Fry",
+                price: 219,
+                image: "menu5.png",
+                category: ["seafood", "spicy"],
+                ingredients: "สปาเกตตี้เส้นใหญ่ (Wide Spaghetti), ซอสเย็นตาโฟเต้าหู้ยี้แดงหมักธรรมชาติ, กุ้งสด, ลูกชิ้นปลาเกรดพรีเมียม, เต้าหู้ทอด, ผักบุ้งกรอบ",
+                health: "เต้าหู้ยี้แดงผ่านกระบวนการหมักธรรมชาติ อุดมด้วยโปรไบโอติกส์ที่ดีต่อลำไส้ พร้อมสารอาหารครบถ้วนจากอาหารทะเลและผักสด"
+            }
+        ];
+
+        // Cart State
+        let cart = [];
+        let selectedModalItem = null;
+        let modalQty = 1;
+
+        // Initialize Icons & Menu
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            renderMenu('all');
+        });
+
+        // Render Menu Cards
+        function renderMenu(filterCategory) {
+            const grid = document.getElementById('menu-grid');
+            grid.innerHTML = '';
+
+            const filtered = filterCategory === 'all' 
+                ? menuItems 
+                : menuItems.filter(item => item.category.includes(filterCategory));
+
+            filtered.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "group rounded-2xl glass-panel border border-white/10 overflow-hidden hover:border-brand-accent/50 transition-all flex flex-col justify-between hover:-translate-y-1.5 shadow-lg";
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="relative h-52 overflow-hidden bg-black">
+                            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute top-3 right-3 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-brand-gold text-xs font-bold border border-white/10">
+                                ${item.price} THB
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-lg font-bold text-white mb-1 group-hover:text-brand-accent transition-colors">${item.title}</h4>
+                            <p class="text-xs text-brand-gold/80 mb-3 font-light">${item.enTitle}</p>
+                            <p class="text-xs text-gray-400 line-clamp-2 font-light leading-relaxed mb-4">${item.health}</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center gap-2">
+                        <button onclick="openModal(${item.id})" class="flex-1 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-medium text-white transition-colors border border-white/10 flex items-center justify-center gap-1">
+                            <i data-lucide="info" class="w-3.5 h-3.5"></i> รายละเอียด
+                        </button>
+                        <button onclick="quickAddToCart(${item.id})" class="p-2.5 rounded-xl bg-brand-accent hover:bg-brand-accentHover text-white transition-colors shadow-md shadow-brand-accent/20">
+                            <i data-lucide="plus" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        // Filter Menu Handler
+        function filterMenu(category) {
+            document.querySelectorAll('.menu-filter-btn').forEach(btn => {
+                if (btn.dataset.filter === category) {
+                    btn.className = "menu-filter-btn px-5 py-2 rounded-full text-xs font-medium bg-brand-accent text-white border border-brand-accent transition-all";
+                } else {
+                    btn.className = "menu-filter-btn px-5 py-2 rounded-full text-xs font-medium bg-white/5 text-gray-300 border border-white/10 hover:border-brand-accent transition-all";
+                }
+            });
+            renderMenu(category);
+        }
+
+        // Modal Functionality
+        function openModal(id) {
+            selectedModalItem = menuItems.find(item => item.id === id);
+            if (!selectedModalItem) return;
+
+            modalQty = 1;
+            document.getElementById('modal-img').src = selectedModalItem.image;
+            document.getElementById('modal-title').innerText = selectedModalItem.title;
+            document.getElementById('modal-subtitle').innerText = selectedModalItem.enTitle;
+            document.getElementById('modal-price').innerText = `${selectedModalItem.price} THB`;
+            document.getElementById('modal-ingredients').innerText = selectedModalItem.ingredients;
+            document.getElementById('modal-health').innerText = selectedModalItem.health;
+            document.getElementById('modal-qty').innerText = modalQty;
+
+            const addBtn = document.getElementById('modal-add-btn');
+            addBtn.onclick = () => {
+                addToCart(selectedModalItem.id, modalQty);
+                closeModal();
+            };
+
+            document.getElementById('menu-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('menu-modal').classList.add('hidden');
+        }
+
+        function updateModalQty(delta) {
+            modalQty = Math.max(1, modalQty + delta);
+            document.getElementById('modal-qty').innerText = modalQty;
+        }
+
+        // Shopping Cart Logic
+        function quickAddToCart(id) {
+            addToCart(id, 1);
+        }
+
+        function addToCart(id, qty) {
+            const item = menuItems.find(m => m.id === id);
+            const existing = cart.find(c => c.id === id);
+
+            if (existing) {
+                existing.qty += qty;
+            } else {
+                cart.push({ ...item, qty });
+            }
+
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const badge = document.getElementById('cart-badge');
+            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+
+            if (totalQty > 0) {
+                badge.innerText = totalQty;
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+
+            // Render Cart Drawer Items
+            const container = document.getElementById('cart-items');
+            container.innerHTML = '';
+
+            if (cart.length === 0) {
+                container.innerHTML = `<div class="text-center text-gray-500 text-sm py-12">ไม่มีรายการในตะกร้า</div>`;
+            } else {
+                cart.forEach(item => {
+                    const row = document.createElement('div');
+                    row.className = "flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/5";
+                    row.innerHTML = `
+                        <img src="${item.image}" class="w-14 h-14 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <h5 class="text-xs font-bold text-white line-clamp-1">${item.title}</h5>
+                            <span class="text-xs text-brand-gold">${item.price} THB x ${item.qty}</span>
+                        </div>
+                        <div class="flex items-center gap-1 bg-black/40 rounded-lg p-1">
+                            <button onclick="changeCartQty(${item.id}, -1)" class="px-1.5 py-0.5 text-xs text-gray-300 hover:text-white">-</button>
+                            <span class="text-xs text-white px-1 font-semibold">${item.qty}</span>
+                            <button onclick="changeCartQty(${item.id}, 1)" class="px-1.5 py-0.5 text-xs text-gray-300 hover:text-white">+</button>
+                        </div>
+                    `;
+                    container.appendChild(row);
+                });
+            }
+
+            // Calculate Total
+            const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            document.getElementById('cart-total').innerText = `${total} THB`;
+        }
+
+        function changeCartQty(id, delta) {
+            const item = cart.find(c => c.id === id);
+            if (!item) return;
+
+            item.qty += delta;
+            if (item.qty <= 0) {
+                cart = cart.filter(c => c.id !== id);
+            }
+            updateCartUI();
+        }
+
+        function toggleCartDrawer() {
+            const drawer = document.getElementById('cart-drawer');
+            drawer.classList.toggle('hidden');
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('โปรดเลือกรายการอาหารก่อนทำการสั่งซื้อ');
+                return;
+            }
+            alert('ขอบคุณสำหรับคำสั่งซื้อ! DekKinsen AI กำลังเตรียมเมนูสุดพิเศษให้คุณ');
+            cart = [];
+            updateCartUI();
+            toggleCartDrawer();
+        }
+
+        // AI Noodle Recommendation Assistant Algorithm
+        function runAIAssistant() {
+            const mood = document.getElementById('ai-mood').value;
+            const health = document.getElementById('ai-health').value;
+
+            let recommendedId = 1;
+
+            if (mood === 'spicy' && health === 'detox') recommendedId = 1;
+            else if (mood === 'healthy' || health === 'lowcarbs') recommendedId = 4;
+            else if (mood === 'exotic' || health === 'antioxidants') recommendedId = 3;
+            else if (health === 'protein') recommendedId = 5;
+            else if (mood === 'healthy' || mood === 'exotic') recommendedId = 2;
+
+            const recItem = menuItems.find(item => item.id === recommendedId);
+
+            const resultBox = document.getElementById('ai-result');
+            document.getElementById('ai-rec-img').style.backgroundImage = `url('${recItem.image}')`;
+            document.getElementById('ai-rec-title').innerText = recItem.title;
+            document.getElementById('ai-rec-desc').innerText = `${recItem.health} (ราคา ${recItem.price} THB)`;
+
+            const recBtn = document.getElementById('ai-rec-btn');
+            recBtn.onclick = () => {
+                addToCart(recItem.id, 1);
+                toggleCartDrawer();
+            };
+
+            resultBox.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
